@@ -1,0 +1,19 @@
+<header>
+    <a href="/">
+        <div class="logo">
+            NIF Searcher
+        </div>
+    </a>
+    
+    <div class="search">
+        <form action="/search" method="GET">
+            <input type="text" name="NIF" placeholder="{{ lang.general.searchBar }}">
+        </form>
+    </div>
+
+    <div class="lang">
+        <a href="/lang?=en" class="{% if lang.lang == 'en' %}selected{% endif %}">en</a>
+        <a href="/lang?=es" class="{% if lang.lang == 'es' %}selected{% endif %}">es</a>
+        <a href="/lang?=pt" class="{% if lang.lang == 'pt' %}selected{% endif %}">pt</a>
+    </div>
+</header>

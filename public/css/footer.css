@@ -1,0 +1,13 @@
+footer {
+    padding: 2vh;
+    width: 100vw;
+    background-color: #f3f3f3;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    margin-top: auto;
+}
+
+footer a {
+    color: black;
+}
