@@ -1,0 +1,19 @@
+{
+  "name": "nif-searcher",
+  "version": "1.0.0",
+  "description": "Search NIF information at http://infocif.es/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ledoctah/nif-searcher.git"
+  },
+  "author": "ledoctah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ledoctah/nif-searcher/issues"
+  },
+  "homepage": "https://github.com/ledoctah/nif-searcher#readme"
+}
