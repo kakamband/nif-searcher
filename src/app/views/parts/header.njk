@@ -12,8 +12,8 @@
     </div>
 
     <div class="lang">
-        <a href="/lang?=en" class="{% if lang.lang == 'en' %}selected{% endif %}">en</a>
-        <a href="/lang?=es" class="{% if lang.lang == 'es' %}selected{% endif %}">es</a>
-        <a href="/lang?=pt" class="{% if lang.lang == 'pt' %}selected{% endif %}">pt</a>
+        <a href="/lang?lang=en" class="{% if session.user.lang == 'en' %}selected{% endif %}">en</a>
+        <a href="/lang?lang=es" class="{% if session.user.lang == 'es' %}selected{% endif %}">es</a>
+        <a href="/lang?lang=pt" class="{% if session.user.lang == 'pt' %}selected{% endif %}">pt</a>
     </div>
 </header>

@@ -1,7 +1,24 @@
 const express = require('express');
 const nunjucks  = require('nunjucks');
+const flash = require('express-flash');
+
+const routes = require('./routes');
+const session = require('./config/session');
 
 const app = express();
+
+app.use(session);
+
+
+app.use((req, res, next) => {
+    res.locals.session = req.session;
+    
+    next();
+})
+
+app.use(flash());
+
+app.use(routes);
 
 app.use(express.static('public'));
 app.set('view engine', 'njk');
@@ -10,18 +27,6 @@ nunjucks.configure('src/app/views', {
     express: app,
     autoescape: false,
     noCache: true
-});
-
-app.get('/', (req, res) => {
-    const langs = require('./lib/lang');
-
-    return res.render('layout', { lang: langs['en'] });
-});
-
-const multer = require('multer');
-const multerConfig = require('./config/multer');
-app.post('/posts', multer(multerConfig).single('file'), (req, res) => {
-    console.log(req.file);
 });
 
 app.listen(5000, () => {

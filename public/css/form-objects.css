@@ -6,3 +6,21 @@ input {
     outline: none;
     border-radius: 5px;
 }
+
+div.upload-area {
+    border: 1px dashed;
+    min-height: 20vh;
+    display: grid;
+    grid-template-rows: 5fr 1fr;
+    justify-items: center;
+    cursor: pointer;
+}
+
+div.upload-area input[type="file"] {
+    display: none;
+}
+
+div.upload-area div.information {
+    display: flex;
+    align-items: center;
+}

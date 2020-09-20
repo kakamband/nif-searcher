@@ -1,0 +1,78 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/scripts/lottie.min.js"></script>
+
+    <title>NIF Searcher</title>
+{% endblock %}
+
+{% block content %}
+    <div class="card" style="">
+        <div class="card-header">
+            <h3>{{lang.general.results_header}}</h3>
+        </div>
+
+        <div class="hash-information">
+            <div class="item hash">
+                Hash:
+                <div class="value">{{found.hash}}</div>
+            </div>
+
+            <div class="item position">
+                {{lang.general.position_queue}}
+                <div class="value">{{found.position}}</div>
+            </div>
+
+            <div class="item status">
+                {{lang.general.status}}
+                <div class="value">{{found.status}}</div>
+            </div>
+
+            <div class="item total">
+                {{lang.general.total_search}}
+                <div class="value">{{found.total}}</div>
+            </div>
+            
+            <div id="progressbar" style="padding: 0px 20px">
+                <div class="bar" style="width: 0%"></div>
+            </div>
+        </div>
+
+        {% if found.finished %}
+        <div style="text-align: center; width: 100%">
+            <a href="/results/{{hash}}/download">{{lang.general.click_download}}</a>
+        </div>
+        {% endif %}
+
+        <div class="axios-results hidden">
+            <div class="lottie">
+
+            </div>
+
+            <div class="message">
+                <a href=""></a> 
+            </div>
+        </div>
+
+        <input type="hidden" name="hash" value="{{hash}}">
+    </div>
+
+    <script>
+        const lang = {
+            general: {
+                results_header: "{{lang.general.results_header}}",
+                waiting_queue: "{{lang.general.waiting_queue}}",
+                started: "{{lang.general.started}}",
+                finished: "{{lang.general.finished}}",
+                download_ready: "{{lang.general.download_ready}}",
+            },
+            success: {},
+            errors: {}
+        }
+
+        const hashFinished = !!"{{found.finished}}";
+    </script>
+
+    <script src="/scripts/progress-state.js"></script>
+{% endblock %}

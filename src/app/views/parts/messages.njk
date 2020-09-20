@@ -1,0 +1,5 @@
+{% if messages %}
+    <div class="messages {% if messages.success %} success {% elif messages.error %} error {% endif %}">
+        {{messages.success or messages.error}}
+    </div>
+{% endif %}

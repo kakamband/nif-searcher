@@ -1,0 +1,87 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/scripts/lottie.min.js"></script>
+    <title>NIF Searcher</title>
+{% endblock %}
+
+{% block content %}
+    <div class="card" style="">
+        <div class="card-header">
+            <h3>{{lang.general.main_header}}</h3>
+        </div>
+
+        <div class="upload-area" onclick="input_file.click()">
+            <input type="file" name="file" id="input_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                onchange="FileUpload.handle(event)">
+            <div class="information">
+                {{lang.general.click_upload}}
+            </div>
+            <div class="file-list">
+                {{lang.general.none_file}}
+            </div>
+        </div>
+
+        <div id="progressbar" class="hidden">
+            <div class="bar" style="width: 0%"></div>
+        </div>
+
+        <button class="submit" {% if not files %}disabled{% endif %} onclick="FileUpload.post()">{{lang.general.submit}}</button>
+
+        <div class="axios-results hidden">
+            <div class="lottie">
+
+            </div>
+
+            <div class="message">
+                <a href=""></a> 
+            </div>
+        </div>
+    </div>
+
+    {% if recent[0] %}
+    <div class="card">
+        <div class="card-header">
+            <h3>{{lang.general.recent_header}}</h3>
+        </div>
+
+        <div class="nif-information">
+            <div class="fake-table">
+                <div class="head">
+                    <div>Hash</div>
+                    <div>{{lang.general.status}}</div>
+                    <div></div>
+                </div>
+
+                {% for item in recent %}
+                    <div class="row">
+                        <div>{{item.hash}}</div>
+                        <div>{{item.status}}</div>
+                        <div>
+                            <a class="button submit" style="margin-top: 0px;" href="/results/{{item.hash}}">Acessar</a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <script src="/scripts/file-upload.js"></script>
+    <script>
+        const lang = {
+            general: {
+                file_submitted: "{{lang.general.file_submitted}}",
+                file_selected: "{{lang.general.file_selected}}",
+            },
+            success: {},
+            errors: {
+                multipleFiles: "{{lang.errors.multipleFiles}}",
+                file_large: "{{lang.errors.file_large}}",
+                unexpected: "{{lang.errors.unexpected}}"
+            }
+        }
+    </script>
+{% endblock %}

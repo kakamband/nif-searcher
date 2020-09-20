@@ -1,0 +1,98 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/scripts/lottie.min.js"></script>
+
+    <title>NIF {{NIF.nif}} - NIF Searcher</title>
+{% endblock %}
+
+{% block content %}
+    <div class="card" style="">
+        <div class="card-header">
+            <h3>{{lang.general.search_header}}</h3>
+        </div>
+
+        <div class="nif-information">
+            <div class="item">
+                NIF:
+                <div class="value">{{NIF.NIF}}</div>
+            </div>
+
+            <div class="item">
+                {{lang.general.razon_social}}:
+                <div class="value">{{NIF["Razón Social"]}}</div>
+            </div>
+
+            <div class="item">
+                {{lang.general.domicilio}}:
+                <div class="value">{{NIF["Domicilio"]}}</div>
+            </div>
+
+            <div class="item">
+                {{lang.general.calle}}:
+                <div class="value">{{NIF["Calle"]}}</div>
+            </div>
+
+            <div class="item">
+                {{lang.general.ciudade}}:
+                <div class="value">{{NIF["Ciudade"]}}</div>
+            </div>
+
+            <div class="item">
+                {{lang.general.provincia}}:
+                <div class="value">{{NIF["Provincia"]}}</div>
+            </div>
+
+            <div class="item">
+                {{lang.general.telefono}}:
+                <div class="value">{{NIF["Teléfono"]}}</div>
+            </div>
+
+            <div class="item">
+                {{lang.general.registro}}:
+                <div class="value">{{NIF["Registro"]}}</div>
+            </div>
+
+            <div class="item">
+                {{lang.general.website}}:
+                <div class="value">{{NIF["Website"]}}</div>
+            </div>
+        </div>
+
+        {% if found.finished %}
+        <div style="text-align: center; width: 100%">
+            <a href="/results/{{hash}}/download">{{lang.general.click_download}}</a>
+        </div>
+        {% endif %}
+
+        <div class="axios-results hidden">
+            <div class="lottie">
+
+            </div>
+
+            <div class="message">
+                <a href=""></a> 
+            </div>
+        </div>
+
+        <input type="hidden" name="hash" value="{{hash}}">
+    </div>
+
+    <script>
+        const lang = {
+            general: {
+                results_header: "{{lang.general.results_header}}",
+                started: "{{lang.general.started}}",
+                finished: "{{lang.general.finished}}",
+                download_ready: "{{lang.general.download_ready}}",
+            },
+            success: {},
+            errors: {}
+        }
+
+        const hashFinished = !!"{{found.finished}}";
+    </script>
+
+    <script src="/scripts/progress-state.js"></script>
+{% endblock %}

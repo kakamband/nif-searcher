@@ -1,0 +1,30 @@
+button,
+a.button {
+    float: right;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+}
+
+button.submit,
+a.button.submit {
+    background-color: rgb(61, 65, 255);
+    color: #FFF;
+}
+
+button.submit:hover {
+    background-color: rgb(77, 79, 255);
+    color: #FFF;
+}
+
+button:disabled {
+    background-color: rgb(179, 179, 179);
+}
+
+button:disabled:hover {
+    background-color: rgb(155, 155, 155);
+}
