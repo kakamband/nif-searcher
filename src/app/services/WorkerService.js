@@ -1,8 +1,6 @@
 const SearchingService = require('./SearchingService');
 const ExcelWriter = require('../../lib/ExcelWriter');
 
-const langs = require('../../lib/lang');
-
 const updatePositions = () => {
     const reduced = module.exports.list.filter(item => !item.finished);
 

@@ -21,7 +21,7 @@ module.exports = {
         if(!req.file.path) {
             return res.send({
                 status: 'error',
-                message: langs['en'].errors.no_files,
+                message: langs[req.session.user.lang].errors.no_files,
             });
         }
 
@@ -29,7 +29,7 @@ module.exports = {
 
         if(!validateColumns(data[0])) return res.send({
             status: 'error',
-            message: langs['en'].errors.invalid_template
+            message: langs[req.session.user.lang].errors.invalid_template
         });
 
         req.body = data;

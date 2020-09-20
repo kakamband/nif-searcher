@@ -117,7 +117,7 @@ const langs_const = {
             progress: 'Progresso: ',
             waiting_queue: 'Aguardando pela fila',
             started: 'Iniciado',
-            finished: 'FInalizado',
+            finished: 'Finalizado',
             download_ready: 'Os dados foram gerados. Seu arquivo será baixado em breve. Se nada acontecer, clique aqui.',
             click_download: 'Os dados já foram gerados. Clique aqui para baixar os resultados.',
             razon_social: 'Razão Social',
