@@ -4,7 +4,8 @@
   "description": "Search NIF information at http://infocif.es/",
   "main": "src/index.js",
   "scripts": {
-    "start": "npm-run-all -p nodemon browsersync",
+    "start": "node src/index.js",
+    "dev": "npm-run-all -p nodemon browsersync",
     "nodemon": "nodemon src/index.js",
     "browsersync": "browser-sync start --proxy http://localhost:5000 --files 'public, views'"
   },
